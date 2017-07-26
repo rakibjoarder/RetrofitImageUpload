@@ -31,7 +31,7 @@ import retrofit2.http.Url;
 //https://pastebin.com/zjLnJHAD
 public class MainActivity extends AppCompatActivity {
 
-    private static String BASE_URL="http://10.0.3.2/RetrofitImageUpload/";  //10.0.3.2 fpr genymotion and 10.0.2.2 for pc
+    private static String BASE_URL="http://rakibjoarder.000webhostapp.com/";  //10.0.3.2 fpr genymotion and 10.0.2.2 for pc
     private ImageView imageIV;
     private EditText  titleET;
     private static final int IMAGE_REQ=777;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void uploadImage()
-    {    progressDialog.show();
+    {
         String image2=imageToString();
         String title2=titleET.getText().toString();
         ////for HTTP log/////
@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity {
                    Toast.makeText(MainActivity.this, response.body().getResponse(), Toast.LENGTH_SHORT).show();
                    imageIV.setVisibility(View.GONE);
                    titleET.setVisibility(View.GONE);
-                   selBT.setEnabled(true);
-                   upBT.setEnabled(false);
+                   selBT.setVisibility(View.VISIBLE);
+                   upBT.setVisibility(View.GONE);
                    progressDialog.dismiss();
                }
             }
@@ -120,8 +120,9 @@ public class MainActivity extends AppCompatActivity {
                 imageIV.setImageBitmap(bitmap);
                 imageIV.setVisibility(View.VISIBLE);
                 titleET.setVisibility(View.VISIBLE);
-                selBT.setEnabled(false);
-                upBT.setEnabled(true);
+                upBT.setVisibility(View.VISIBLE);
+                selBT.setVisibility(View.GONE);
+
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -146,9 +147,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void UploadImage(View view) {
         uploadImage();
+        progressDialog.show();
     }
 
     public void ChooseImage(View view) {
         selectImage();
+    }
+
+    public void ShowImage(View view) {
+        startActivity(new Intent(MainActivity.this,ImageShowActivity.class));
     }
 }

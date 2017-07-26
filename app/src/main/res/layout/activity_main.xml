@@ -9,9 +9,8 @@
     tools:context="com.aust.rakib.retrofitimageupload.MainActivity">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="220dp"
         android:layout_margin="20dp"
-
         android:visibility="gone"
         android:id="@+id/image"/>
     <EditText
@@ -33,17 +32,26 @@
         android:layout_gravity="center"
         android:id="@+id/selBt"/>
 
+
     <Button
         android:onClick="UploadImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Upload Image"
-        android:enabled="false"
+        android:visibility="gone"
         android:paddingRight="40dp"
         android:paddingLeft="40dp"
         android:layout_gravity="center"
         android:id="@+id/upBt"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gallery"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
+        android:onClick="ShowImage"
+        android:layout_gravity="center"
+        />
 
 
 </LinearLayout>
